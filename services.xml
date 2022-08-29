@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://ofbiz.apache.org/dtds/services.xsd">
+    <description>OfbizDemo Services</description>
+    <vendor></vendor>
+    <version>1.0</version>
+
+    <service name="createOfbizDemo" default-entity-name="OfbizDemo" engine="entity-auto" invoke="create" auth="true">
+        <description>Create an Ofbiz Demo record</description>
+        <auto-attributes include="pk" mode="OUT" optional="false"/>
+        <auto-attributes include="nonpk" mode="IN" optional="false"/>
+        <override name="comments" optional="true"/>
+    </service>
+
+    <service name="createPersonRecordByJavaService" default-entity-name="PersonEntity" engine="java"
+        location="com.hotwax.ofbizdemo.service.PersonRecordService" invoke="createPersonRecord" auth="true">
+        <description>Create an Person record using a service in Java</description>
+        <attribute name="partyId" type="String" mode="INOUT" optional="true"/>
+        <attribute name="roleTypeId" type="String" mode="IN" optional="false"/>
+        <attribute name="contactMechId" type="String" mode="IN" optional="false"/>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="false"/>
+        <attribute name="emailAddress" type="String" mode="IN" optional="false"/>
+        <attribute name="contactNumber" type="String" mode="IN" optional="false"/>
+        <attribute name="address" type="String" mode="IN" optional="false"/>
+        <attribute name="comments" type="String" mode="IN" optional="false"/>
+    </service>
+
+    <service name="createPersonRecordByGroovyService" default-entity-name="PersonEntity" engine="groovy"
+        location="component://ofbizDemo/groovyScripts/Customer/PersonRecordService.groovy" invoke="PersonRecordService" auth="true">
+        <description>Create an Person record using a service in Groovy</description>
+        <attribute name="partyId" type="String" mode="INOUT" optional="true"/>
+        <attribute name="roleTypeId" type="String" mode="IN" optional="false"/>
+        <attribute name="contactMechId" type="String" mode="IN" optional="false"/>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="false"/>
+        <attribute name="emailAddress" type="String" mode="IN" optional="false"/>
+        <attribute name="contactNumber" type="String" mode="IN" optional="false"/>
+        <attribute name="address" type="String" mode="IN" optional="false"/>
+        <attribute name="comments" type="String" mode="IN" optional="false"/>
+    </service>
+
+    <service name="createPersonRecordByXmlService" default-entity-name="PersonEntity" engine="simple"
+        location="component://ofbizDemo/minilang/PersonRecord.xml" invoke="createPersonRecord" auth="false">
+        <description>Create an Person record using a service in XML</description>
+        <attribute name="partyId" type="String" mode="INOUT" optional="true"/>
+        <attribute name="roleTypeId" type="String" mode="IN" optional="false"/>
+        <attribute name="contactMechId" type="String" mode="IN" optional="false"/>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="false"/>
+        <attribute name="emailAddress" type="String" mode="IN" optional="true"/>
+        <attribute name="contactNumber" type="String" mode="IN" optional="true"/>
+        <attribute name="address" type="String" mode="IN" optional="true"/>
+        <attribute name="comments" type="String" mode="IN" optional="true"/>
+    </service>
+
+    <service name="createPersonEntityByEntityAuto" default-entity-name="PersonEntity" engine="entity-auto" invoke="create" auth="true">
+        <description>Create an Person record using entityAuto</description>
+        <attribute name="partyId" type="String" mode="INOUT" optional="true"/>
+        <attribute name="roleTypeId" type="String" mode="IN" optional="false"/>
+        <attribute name="contactMechId" type="String" mode="IN" optional="false"/>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="false"/>
+        <attribute name="emailAddress" type="String" mode="IN" optional="true"/>
+        <attribute name="contactNumber" type="String" mode="IN" optional="true"/>
+        <attribute name="address" type="String" mode="IN" optional="true"/>
+        <attribute name="comments" type="String" mode="IN" optional="true"/>
+    </service>
+    <service name="createPersonEntity" default-entity-name="PersonEntity" engine="entity-auto" invoke="update" auth="true">
+        <description>Create an Person record using entityAuto</description>
+        <attribute name="partyId" type="String" mode="INOUT" optional="true"/>
+        <attribute name="roleTypeId" type="String" mode="IN" optional="false"/>
+        <attribute name="contactMechId" type="String" mode="IN" optional="false"/>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="false"/>
+        <attribute name="emailAddress" type="String" mode="IN" optional="true"/>
+        <attribute name="contactNumber" type="String" mode="IN" optional="true"/>
+        <attribute name="address" type="String" mode="IN" optional="true"/>
+        <attribute name="comments" type="String" mode="IN" optional="true"/>
+    </service>
+
+    <service name="uiCountryAndStateSelectionByJava" engine="java"
+             location="com.hotwax.ofbizdemo.service.UiCountryAndStateSelection" invoke="createUiCountryAndState" auth="true">
+        <description>Create an dynamic selection record using a service in Java</description>
+        <attribute name="partyId" type="String" mode="INOUT" optional="true"/>
+        <attribute name="firstName" type="String" mode="IN" optional="false"/>
+        <attribute name="lastName" type="String" mode="IN" optional="false"/>
+        <attribute name="city" type="String" mode="IN" optional="false"/>
+        <attribute name="country" type="String" mode="IN" optional="false"/>
+        <attribute name="state" type="String" mode="IN" optional="false"/>
+        <attribute name="address1" type="String" mode="IN" optional="true"/>
+        <attribute name="postalCode" type="String" mode="IN" optional="false"/>
+    </service>
+
+</services>
